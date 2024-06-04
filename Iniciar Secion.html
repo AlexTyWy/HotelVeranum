@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Iniciar sesión - Hotel Veranum</title>
+</head>
+<body>
+  <header>
+    <h1>Hotel Veranum</h1>
+  </header>
+  <h1>Iniciar sesión</h1>
+  <form id="login-form" action="login.php" method="post" novalidate>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <div class="error-message" id="email-error"></div>
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" required pattern=".{8,}">
+    <div class="error-message" id="password-error"></div>
+    <button type="submit">Iniciar sesión</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("login-form");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const emailError = document.getElementById("email-error");
+    const passwordError = document.getElementById("password-error");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        if (!emailInput.validity.valid) {
+          emailError.textContent = "Por favor, ingresa un correo electrónico válido.";
+        } else {
+          emailError.textContent = "";
+        }
+
+        if (!passwordInput.validity.valid) {
+          passwordError.textContent = "La contraseña debe tener al menos 8 caracteres.";
+        } else {
+          passwordError.textContent = "";
+        }
+      } else {
+        form.submit();
+      }
+
+      form.classList.add("was-validated");
+    });
+  </script>
+</body>
+</html>

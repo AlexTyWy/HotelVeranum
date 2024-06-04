@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservar habitación en Hotel Veranum</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Hotel Veranum</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Habitaciones</a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
+  <main role="main">
+    <section>
+      <h2>Reservar una habitación en Hotel Veranum</h2>
+      <form id="reservation-form" method="post" action="/api/reservations" novalidate>
+        <fieldset aria-labelledby="reservation-legend">
+          <legend id="reservation-legend" class="screen-reader-text">Detalles de la reserva</legend>
+          <div>
+            <label for="checkin" id="checkin-label">Fecha de entrada:</label>
+            <input type="date" id="checkin" name="checkin" required aria-required="true" aria-labelledby="checkin-label">
+            <div class="error-message" id="checkin-error"></div>
+          </div>
+          <div>
+            <label for="checkout" id="checkout-label">Fecha de salida:</label>
+            <input type="date" id="checkout" name="checkout" required aria-required="true" aria-labelledby="checkout-label">
+            <div class="error-message" id="checkout-error"></div>
+          </div>
+          <div>
+            <label for="room" id="room-label">Habitación:</label>
+            <select id="room" name="room" required aria-required="true" aria-labelledby="room-label">
+              <option value="1">Habitación 1</option>
+              <option value="2">Habitación 2</option>
+              <option value="3">Habitación 3</option>
+            </select>
+            <div class="error-message" id="room-error"></div>
+          </div>
+          <div>
+            <label for="extras" id="extras-label">Servicios extras:</label>
+            <select id="extras" name="extras" multiple aria-required="true" aria-labelledby="extras-label">
+              <option value="1">Servicio extra 1</option>
+              <option value="2">Servicio extra 2</option>
+              <option value="3">Servicio extra 3</option>
+            </select>
+            <div class="error-message" id="extras-error"></div>
+          </div>
+        </fieldset>
+        <button type="submit" aria-describedby="submit-button-description">Reservar</button>
+        <p id="submit-button-description" class="screen-reader-text">Enviar formulario de reserva</p>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <!-- Footer content -->
+  </footer>
+
+  <script>
+    const form = document.getElementById("reservation-form");
+    const checkinInput = document.getElementById("checkin");
+    const checkoutInput = document.getElementById("checkout");
+    const roomInput = document.getElementById("room");
+    const extrasInput = document.getElementById("extras");
+    const checkinError = document.getElementById("checkin-error");
+    const checkoutError = document.getElementById("checkout-error");
+    const roomError = document.getElementById("room-error");
+    const extrasError = document.getElementById("extras-error");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        if (!checkinInput.validity.valid) {
+          checkinError.textContent = "Por favor, selecciona una fecha de entrada.";
+        } else {
+          checkinError.textContent = "";
+        }
+
+        if (!checkoutInput.validity.valid) {
+          checkoutError.textContent = "Por favor, selecciona una fecha de salida.";
+        } else {
+          checkoutError.textContent = "";
+        }
+
+        if (!roomInput.validity.valid) {
+          roomError.textContent = "Por favor, selecciona una habitación.";
+        } else {
+          roomError.textContent = "";
+        }
+
+        if (!extrasInput.validity.valid) {
+          extrasError.textContent = "Por favor, selecciona al menos un servicio extra.";
+        } else {
+          extrasError.textContent = "";
+        }
+      } else {
+        form.submit();
+      }
+
+      form.classList.add("was-validated");
+    });
+  </script>
+</body>
+</html>

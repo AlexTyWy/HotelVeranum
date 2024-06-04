@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="normalize.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Registrarse - Hotel Veranum</title>
+</head>
+<body>
+  <header>
+    <h1>Hotel Veranum</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Registrarse</h2>
+      <form id="register-form" action="register.php" method="post" aria-label="Formulario de registro" role="form" novalidate>
+        <fieldset>
+          <legend>Información de registro</legend>
+          <div>
+            <label for="name" aria-label="Nombre" aria-describedby="name-help">Nombre:</label>
+            <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
+            <div class="error-message" id="name-error"></div>
+          </div>
+          <div>
+            <label for="email" aria-label="Email" aria-describedby="email-help">Email:</label>
+            <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error">
+            <div class="error-message" id="email-error"></div>
+          </div>
+          <div>
+            <label for="password" aria-label="Contraseña" aria-describedby="password-help">Contraseña:</label>
+            <input type="password" id="password" name="password" required aria-required="true" aria-describedby="password-error">
+            <div class="error-message" id="password-error"></div>
+          </div>
+          <button type="submit" aria-label="Registrarse">Registrarse</button>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("register-form");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const nameError = document.getElementById("name-error");
+    const emailError = document.getElementById("email-error");
+    const passwordError = document.getElementById("password-error");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        if (!nameInput.validity.valid) {
+          nameError.textContent = "Por favor, ingresa un nombre válido.";
+        } else {
+          nameError.textContent = "";
+        }
+
+        if (!emailInput.validity.valid) {
+          emailError.textContent = "Por favor, ingresa un email válido.";
+        } else {
+          emailError.textContent = "";
+        }
+
+        if (!passwordInput.validity.valid) {
+          passwordError.textContent = "Por favor, ingresa una contraseña válida.";
+        } else {
+          passwordError.textContent = "";
+        }
+      } else {
+        form.submit();
+      }
+
+      form.classList.add("was-validated");
+    });
+  </script>
+</body>
+</html>

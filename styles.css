@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+  }
+  
+  header {
+    grid-column: span 12;
+    background-color: #87CEEB; /* Azul claro */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 36px;
+    margin: 0;
+    color: #333; /* Negro */
+  }
+  
+  h1 {
+    grid-column: span 12;
+    text-align: center;
+  }
+  
+  form {
+    grid-column: span 12;
+    background-color: #FFFFFF; /* Blanco */
+    padding: 20px;
+    border: 1px solid #CCCCCC; /* Gris claro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #CCCCCC; /* Gris claro */
+  }
+  
+  button[type="submit"] {
+    background-color: #2E4053; /* Azul oscuro */
+    color: #FFFFFF; /* Blanco */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #1A1D23; /* Azul oscuro hover */
+  }
+  
+  @media (max-width: 600px) {
+    form {
+      grid-column: span 6;
+      margin: 0 auto;
+    }
+  }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+  }
+  
+  header {
+    grid-column: span 12;
+    background-color: #87CEEB; /* Azul claro */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 36px;
+    margin: 0;
+    color: #333; /* Negro */
+  }
+  
+  main {
+    grid-column: span 12;
+    padding: 20px;
+  }
+  
+  section {
+    background-color: #FFFFFF; /* Blanco */
+    padding: 20px;
+    border: 1px solid #CCCCCC; /* Gris claro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+  
+  button[type="submit"] {
+    background-color: #87CEEB; /* Azul claro */
+    color: #FFFFFF; /* Blanco */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #579ADE; /* Azul oscuro */
+  }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+  }
+  
+  header {
+    grid-column: span 12;
+    background-color: #87CEEB; /* Azul claro */
+  }
