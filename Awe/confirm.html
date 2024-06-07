@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Reserva</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="register-container">
+    <div class="register-content">
+        <h1>Confirmación de Reserva</h1>
+        <div id="reservationDetails"></div>
+        <button class="btn-register" onclick="confirmReservation()">Confirmar Reserva</button>
+    </div>
+    <div class="register-image">
+        <img src="fotos/confirm-image.jpg" alt="Confirmación">
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const reservation = JSON.parse(localStorage.getItem('reservation'));
+        if (!reservation) {
+            alert('No hay información de reserva. Por favor, inicie el proceso de reserva.');
+            window.location.href = 'index.html'; // Redirigir a la página de inicio o reserva
+            return;
+        }
+
+        const reservationDetails = `
+                <p><strong>Nombre de Usuario:</strong> ${reservation.username}</p>
+                <p><strong>Correo Electrónico:</strong> ${reservation.email}</p>
+                <p><strong>Hotel:</strong> ${reservation.hotel}</p>
+                <p><strong>Tipo de Habitación:</strong> ${reservation.roomType}</p>
+                <p><strong>Precio:</strong> $${reservation.price}/noche</p>
+                <p><strong>Fecha de Entrada:</strong> ${reservation.checkIn}</p>
+                <p><strong>Fecha de Salida:</strong> ${reservation.checkOut}</p>
+            `;
+        document.getElementById('reservationDetails').innerHTML = reservationDetails;
+    });
+
+    function confirmReservation() {
+        alert('¡Reserva confirmada! Gracias por su reserva.');
+        localStorage.removeItem('reservation');
+        window.location.href = 'index.html'; // Redirigir a la página de inicio o donde desees
+    }
+</script>
+</body>
+</html>

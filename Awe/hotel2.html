@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="info-container">
+    <div class="hotel-info-left">
+        <img src="fotos/hotel2.jpg" alt="Hotel 2" class="hotel-image">
+        <h1 id="hotelName">Hotel 2</h1>
+        <ul class="amenities-list">
+            <li>Cama VIP</li>
+            <li>Televisión</li>
+            <li>Wi-Fi Gratis</li>
+            <li>Desayuno Incluido</li>
+        </ul>
+    </div>
+    <div class="hotel-reserve-right">
+        <h2>Reserva tu Habitación</h2>
+        <form class="reserve-form">
+            <label for="roomType">Tipo de Habitación:</label>
+            <select id="roomType" name="roomType" onchange="updatePrice()">
+                <option value="single" data-price="120">Individual - $120/noche</option>
+                <option value="double" data-price="180">Doble - $180/noche</option>
+                <option value="suite" data-price="300">Suite - $300/noche</option>
+            </select>
+            <p id="roomPrice">Precio por noche: $120</p>
+
+            <label for="extras">Agregar Extras:</label>
+            <select id="extras" name="extras" onchange="updateTotal()">
+                <option value="none" data-price="0">Ninguno</option>
+                <option value="breakfast" data-price="20">Desayuno - $20</option>
+                <option value="parking" data-price="15">Estacionamiento - $15</option>
+                <option value="spa" data-price="50">Acceso al Spa - $50</option>
+            </select>
+            <p id="extrasPrice">Precio del Extra: $0</p>
+
+            <p id="totalPrice">Precio Total: $120</p>
+
+            <label for="checkIn">Fecha de Entrada:</label>
+            <input type="date" id="checkIn" name="checkIn">
+            <label for="checkOut">Fecha de Salida:</label>
+            <input type="date" id="checkOut" name="checkOut">
+            <button type="button" class="btn-reserve" onclick="openRegisterModal()">Reservar Ahora</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal de Registro -- registrros -->
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeRegisterModal()">&times;</span>
+        <h1>Regístrate para Continuar</h1>
+        <form action="register.html" method="get">
+            <button type="submit" class="btn-register">Ir al Registro</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function updatePrice() {
+        var roomType = document.getElementById('roomType');
+        var selectedOption = roomType.options[roomType.selectedIndex];
+        var price = selectedOption.getAttribute('data-price');
+        document.getElementById('roomPrice').textContent = 'Precio por noche: $' + price;
+        updateTotal();
+    }
+
+    function updateTotal() {
+        var roomType = document.getElementById('roomType');
+        var selectedRoomOption = roomType.options[roomType.selectedIndex];
+        var roomPrice = parseInt(selectedRoomOption.getAttribute('data-price'));
+
+        var extras = document.getElementById('extras');
+        var selectedExtrasOption = extras.options[extras.selectedIndex];
+        var extrasPrice = parseInt(selectedExtrasOption.getAttribute('data-price'));
+
+        var totalPrice = roomPrice + extrasPrice;
+        document.getElementById('extrasPrice').textContent = 'Precio del Extra: $' + extrasPrice;
+        document.getElementById('totalPrice').textContent = 'Precio Total: $' + totalPrice;
+    }
+
+    function openRegisterModal() {
+        // Guardar la información de la reserva en localStorage
+        const roomType = document.getElementById('roomType').value;
+        const price = document.getElementById('totalPrice').textContent.split('$')[1]; // Obtener el precio total
+        const checkIn = document.getElementById('checkIn').value;
+        const checkOut = document.getElementById('checkOut').value;
+        const hotel = document.getElementById('hotelName').textContent;
+
+        // Simulación de usuario registrado
+        const user = JSON.parse(localStorage.getItem('user')) || {};
+
+        const reservation = {
+            username: user.username || '',
+            email: user.email || '',
+            hotel: hotel,
+            roomType: roomType,
+            price: price,
+            checkIn: checkIn,
+            checkOut: checkOut
+        };
+
+        localStorage.setItem('reservation', JSON.stringify(reservation));
+
+        // Mostrar el modal de registro x
+        document.getElementById('registerModal').style.display = 'block';
+    }
+
+    function closeRegisterModal() {
+        document.getElementById('registerModal').style.display = 'none';
+    }
+
+    // Inicializar el precio en la carga de la página xxx
+    document.addEventListener('DOMContentLoaded', function() {
+        updatePrice();
+    });
+</script>
+</body>
+</html>

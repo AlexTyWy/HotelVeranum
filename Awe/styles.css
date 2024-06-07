@@ -1,0 +1,399 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+.hero {
+    background-image: url('fotos/board2.png');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.navbar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Asegura que la navbar esté encima de la overlay */
+}
+
+.btn-nav, .btn-reserve, .btn-more-info, .btn-back {
+    padding: 15px 30px;
+    font-size: 1em;
+    background-color: #e76f51;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-right: 10px;
+}
+
+.btn-nav:hover, .btn-reserve:hover, .btn-more-info:hover, .btn-back:hover {
+    background-color: #d64535;
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+}
+
+.content {
+    text-align: center;
+    color: white;
+    z-index: 600;
+}
+
+.headline {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.btn-reserve {
+    margin-top: 20px;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.reservation-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="date"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.hotel-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.hotel-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 48%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.hotel-card:hover {
+    transform: scale(1.05);
+}
+
+.hotel-card img {
+    width: 100%;
+    height: auto;
+}
+
+.hotel-info {
+    padding: 15px;
+}
+
+.hotel-info h2 {
+    margin-top: 0;
+}
+
+.hotel-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.hotel-info ul li {
+    background: url('fotos/checkmark.png') no-repeat left center;
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-info-left {
+    width: 60%;
+}
+
+.hotel-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.amenities-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.amenities-list li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    background: url('fotos/checkmark.png') no-repeat left center;
+}
+
+.hotel-reserve-right {
+    width: 35%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-reserve-right h2 {
+    margin-top: 0;
+}
+
+.reserve-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.reserve-form label {
+    margin-bottom: 10px;
+}
+
+.reserve-form select, .reserve-form input[type="date"] {
+    margin-bottom: 20px;
+}
+
+.btn-reserve {
+    width: 100%;
+    padding: 15px;
+    font-size: 1em;
+    background-color: #e76f51;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-reserve:hover {
+    background-color: #d64535;
+    transform: scale(1.05);
+}
+
+.btn-back {
+    margin-top: 20px;
+}
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f5f8fa;
+}
+
+.hidden {
+    display: none;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f5f8fa;
+}
+
+.hidden {
+    display: none;
+}
+
+.register-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.register-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.register-content h1 {
+    color: #ff8c00; /* Cambiando el color a naranja */
+    margin-bottom: 20px;
+}
+
+.register-content form {
+    width: 100%;
+    max-width: 400px;
+}
+
+.register-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.register-content input[type="text"],
+.register-content input[type="password"],
+.register-content input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.btn-register {
+    width: 100%;
+    padding: 15px;
+    font-size: 1em;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-register:hover {
+    background-color: #e67300;
+    transform: scale(1.05);
+}
+
+.register-content p {
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.register-content p a {
+    color: #ff8c00;
+    text-decoration: none;
+}
+
+.register-content p a:hover {
+    text-decoration: underline;
+}
+
+.register-image {
+    flex: 1;
+    background-color: #ff8c00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-image img {
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Modal de Registro */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
